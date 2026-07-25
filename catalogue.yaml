@@ -57,15 +57,29 @@
       state: started
       enabled: yes
 
-  # - name: copy mongo repo
-  #   ansible.builtin.copy:
-  #     src: mongo.repo
-  #     dest: /etc/yum.repos.d/mongo.repo
+  - name: copy mongodb repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
   
-  # - nmae: install mongodb client
-  #   ansible.builtin.dnf:
-  #     name: mongodb-mongosh
-  #     state: present
+  - nmae: install mongodb client
+    ansible.builtin.dnf:
+      name: mongodb-mongosh
+      state: present
+  
+  - name: check products loaded or not
+    ansible.builtin.command: mongosh --host mongodb.devaws84s.online --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+    resister: catalogue_ouput
+
+  - name: print catalogue output
+    ansible.builtin.debug:
+      msg: "{{ catalogue_ouput }}"
+
+  - name: load products
+    ansible.builtin.shell: mongosh --host mongodb.devaws84s.online < /app/db/master-data.js
+    when: catalogue_ouput | int < 0
+
+    
 
   
 
