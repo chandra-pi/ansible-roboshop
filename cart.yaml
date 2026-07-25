@@ -1,5 +1,5 @@
 - name: configure cart server
-  hosts: user
+  hosts: cart
   become: yes
   tasks:
   - name: disable default nodejs
@@ -42,7 +42,7 @@
     community.general.npm:
       path: /app
 
-  - name: copy catalogue server to system directory
+  - name: copy cart server to system directory
     ansible.builtin.copy:
       src: cart.service
       dest: /etc/systemd/system/cart.service
