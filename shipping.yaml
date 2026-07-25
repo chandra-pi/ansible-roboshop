@@ -10,7 +10,7 @@
   - name: installing python packages
     ansible.builtin.pip:
       name: "{{ item }}"
-      state: installed
+      state: present
       executable: pip3.9
     loop:
     - cryptography
