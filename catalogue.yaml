@@ -69,7 +69,7 @@
   
   - name: check products loaded or not
     ansible.builtin.command: mongosh --host mongodb.devaws84s.online --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
-    resister: catalogue_ouput
+    register: catalogue_ouput
 
   - name: print catalogue output
     ansible.builtin.debug:
