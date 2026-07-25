@@ -57,15 +57,15 @@
       state: started
       enabled: yes
 
-  - name: copy mongo repo
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.repo
+  # - name: copy mongo repo
+  #   ansible.builtin.copy:
+  #     src: mongo.repo
+  #     dest: /etc/yum.repos.d/mongo.repo
   
-  - nmae: install mongodb client
-    ansible.builtin.dnf:
-      name: mongodb-mongosh
-      state: present
+  # - nmae: install mongodb client
+  #   ansible.builtin.dnf:
+  #     name: mongodb-mongosh
+  #     state: present
 
   
 
