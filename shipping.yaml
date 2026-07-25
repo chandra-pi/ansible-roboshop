@@ -79,7 +79,7 @@
       login_password: RoboShop@1
       login_host: mysql.devaws84s.online
       state: import
-      tartet: "{{ item }}"
+      target: "{{ item }}"
     loop:
     - /app/db/schema.sql
     - /app/db/app-user.sql
