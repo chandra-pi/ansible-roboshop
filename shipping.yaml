@@ -53,23 +53,23 @@
 
   - name: copy sipping service
     ansible.builtin.copy:
-    src: shipping.service
-    dest: /etc/systemd/system/shipping.service
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
 
   - name: daemon reload
     ansible.builtin.systemd_service:
-    daemon_reload: true
+      daemon_reload: true
     
   - name: enable and statr shipping
     ansible.builtin.service:
-    name: shipping
-    state: started
-    enabled: yes
+      name: shipping
+      state: started
+      enabled: yes
 
   - name: install mysql client
     ansible.builtin.dnf:
-    name: mysql
-    state: installed
+      name: mysql
+      state: installed
 
   - name: import data
     community.mysql.mysql_db:
