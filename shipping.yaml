@@ -71,6 +71,8 @@
 
 
   - name: import data
+    tags:
+      - import
     community.mysql.mysql_db:
       name: all
       login_user: root
@@ -84,6 +86,8 @@
     - /app/db/master-data.sql
 
   - name: restart shipping
+    tags:
+      - import
     ansible.builtin.service:
       name: shipping
       state: restarted
