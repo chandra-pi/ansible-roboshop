@@ -18,7 +18,7 @@
       name: nginx
       state: started
       enabled: yes
-  
+
   - name: remove html directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
