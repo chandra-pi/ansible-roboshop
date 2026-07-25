@@ -62,7 +62,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
   
-  - nmae: install mongodb client
+  - name: install mongodb client
     ansible.builtin.dnf:
       name: mongodb-mongosh
       state: present
@@ -79,7 +79,7 @@
     ansible.builtin.shell: mongosh --host mongodb.devaws84s.online < /app/db/master-data.js
     when: catalogue_ouput | int < 0
 
-    
+
 
   
 
