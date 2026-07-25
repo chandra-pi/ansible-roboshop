@@ -9,8 +9,12 @@
   
   - name: installing python packages
     ansible.builtin.pip:
-      name: PyMySQL
+      name: "{{ item }}"
+      state: installed
       executable: pip3.9
+    loop:
+    - cryptography
+    - PyMySQL
 
   - name: create roboshop system user
     ansible.builtin.user:
@@ -66,6 +70,24 @@
     ansible.builtin.dnf:
     name: mysql
     state: installed
+
+  - name: import data
+    community.mysql.mysql_db:
+      name: all
+      login_user: root
+      login_password: RoboShop@1
+      login_host: mysql.devaws84s.online
+      state: import
+      tartet: "{{ item }}"
+    loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql
+    - /app/db/master-data.sql
+
+  - name: restart shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
 
 
   
